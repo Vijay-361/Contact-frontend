@@ -25,11 +25,15 @@ export default function ContactForm({ fetchContacts }) {
       return;
     }
 
-    await axios.post("https://contacts-1p2f.onrender.com", form);
-
-    setForm({ name: "", email: "", phone: "", message: "" });
-    setError("");
-    fetchContacts();
+    try {
+      await axios.post("https://contacts-1p2f.onrender.com/api/contacts", form);
+      setForm({ name: "", email: "", phone: "", message: "" });
+      setError("");
+      fetchContacts();
+    } catch (err) {
+      console.error(err);
+      setError("Failed to add contact. Try again!");
+    }
   };
 
   return (

@@ -8,8 +8,13 @@ export default function App() {
   const [contacts, setContacts] = useState([]);
 
   const fetchContacts = async () => {
-    const res = await axios.get("https://contacts-1p2f.onrender.com");
-    setContacts(res.data);
+    try {
+      const res = await axios.get("https://contacts-1p2f.onrender.com/api/contacts");
+      setContacts(res.data);
+    } catch (err) {
+      console.error(err);
+      alert("Failed to fetch contacts");
+    }
   };
 
   useEffect(() => {
@@ -18,14 +23,11 @@ export default function App() {
 
   return (
     <div className="app">
-      
       <header className="header">
         <h1>Contact Management App</h1>
-
-        
       </header>
-      <ContactForm fetchContacts={fetchContacts} />
 
+      <ContactForm fetchContacts={fetchContacts} />
       <ContactList contacts={contacts} fetchContacts={fetchContacts} />
 
       <footer className="footer">

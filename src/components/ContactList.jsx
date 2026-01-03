@@ -1,10 +1,15 @@
 export default function ContactList({ contacts, fetchContacts }) {
 
   const deleteContact = async (id) => {
-    await fetch(`https://contacts-1p2f.onrender.com/${id}`, {
-      method: "DELETE"
-    });
-    fetchContacts();
+    try {
+      await fetch(`https://contacts-1p2f.onrender.com/api/contacts/${id}`, {
+        method: "DELETE"
+      });
+      fetchContacts();
+    } catch (err) {
+      console.error(err);
+      alert("Failed to delete contact");
+    }
   };
 
   return (
