@@ -8,7 +8,7 @@ export default function App() {
   const [contacts, setContacts] = useState([]);
 
   const fetchContacts = async () => {
-    const res = await axios.get("http://localhost:5000/api/contacts");
+    const res = await axios.get("https://contacts-1p2f.onrender.com");
     setContacts(res.data);
   };
 

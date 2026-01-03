@@ -1,7 +1,7 @@
 export default function ContactList({ contacts, fetchContacts }) {
 
   const deleteContact = async (id) => {
-    await fetch(`http://localhost:5000/api/contacts/${id}`, {
+    await fetch(`https://contacts-1p2f.onrender.com/${id}`, {
       method: "DELETE"
     });
     fetchContacts();

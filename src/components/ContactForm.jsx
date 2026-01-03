@@ -25,7 +25,7 @@ export default function ContactForm({ fetchContacts }) {
       return;
     }
 
-    await axios.post("http://localhost:5000/api/contacts", form);
+    await axios.post("https://contacts-1p2f.onrender.com", form);
 
     setForm({ name: "", email: "", phone: "", message: "" });
     setError("");
